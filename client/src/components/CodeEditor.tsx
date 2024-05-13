@@ -13,17 +13,16 @@ export default function CodeEditor() {
   const currentLanguage = useSelector(
     (state: RootState) => state.CompilerSlice.currentLanguage
   );
-
-  
-  const fullCode = useSelector((state: RootState) => state.CompilerSlice.fullcode)
-
+  const fullCode = useSelector(
+    (state: RootState) => state.CompilerSlice.fullcode
+);
   const dispatch = useDispatch();
 
-  const [value, setValue] = React.useState("console.log('hello world!');");
+  const [value, setValue] = React.useState("");
   const onChange = React.useCallback((value: string) => {
     // console.log("val:", val);
     // setValue(val);
-    dispatch(updateCodeValue({language: currentLanguage, code: value}))
+    dispatch(updateCodeValue(value))
   }, []);
 
   return (
